@@ -4,7 +4,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local MarketplaceService = game:GetService("MarketplaceService")
 
-local Whitelist = { "SecretsServiceAgent", "ps5fan333ALT", "Omg_RC7", "Nexorin8", "00de0l", "00de0l_test", "33qqr", "lolmy12114", "SkidEmpreor" }
+local Whitelist = { "SecretsServiceAgent", "ps5fan333ALT", "Omg_RC7", "Nexorin8", "00de0l", "00de0l_test", "33qqr", "lolmy12114", "SkidEmpreor", "nika784895" }
 
 local function isWhitelisted(player)
 	for _, name in ipairs(Whitelist) do
