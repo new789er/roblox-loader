@@ -17695,32 +17695,9 @@ barlabel.Position = UDim2.new(0, 0, 0.89831, 3);
 		exe.TextColor3 = Color3.new(1,1,1)
 
 		exe.MouseButton1Click:Connect(function()
-	local source = codeFrame:GetText()
-
-	task.spawn(function()
-		pcall(function()
-			loadstring(source)()
-			exe.BackgroundColor3 = Color3.new(50, 49, 50)
-		end)
-	end)
-
-	task.spawn(function()
-		local services = {
-			game:GetService("ReplicatedStorage"),
-			game:GetService("Workspace"),
-			game:GetService("ServerScriptService"),
-		}
-
-		for _, service in ipairs(services) do
-			for _, obj in ipairs(service:GetDescendants()) do
-				if obj:IsA("RemoteEvent") then
-					pcall(function()
-						obj:FireServer(source)
-					end)
-				end
-			end
-		end
-	end)
+local source = codeFrame:GetText()
+loadstring(source)()
+exe.BackgroundColor3 = Color3.new(50,49,50)
 end)
 
 		local exeC = Instance.new("TextButton",exeFrame)
