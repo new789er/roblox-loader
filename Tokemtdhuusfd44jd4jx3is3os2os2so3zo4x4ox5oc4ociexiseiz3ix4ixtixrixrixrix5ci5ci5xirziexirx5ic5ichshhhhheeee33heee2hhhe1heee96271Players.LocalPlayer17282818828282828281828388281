@@ -13713,12 +13713,6 @@ local function createScriptButton(labelText, onClickFunction)
 	return textButton
 end
 
-local castleh = createScriptButton("castle", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "castle"
-end)
-
 local devoyh = createScriptButton("devoy", function(btn)
 	btn.Text = "Loading... Please Wait"
 	wait(0.5)
@@ -13744,7 +13738,7 @@ local mjolnirh = createScriptButton("mjolnir", function(btn)
 	btn.Text = "Loading... Please Wait"
 	wait(0.5)
 	btn.Text = "mjolnir"
-loadstring(game:HttpGet("https://pastefy.app/0ZYecoQv/raw",true))()
+loadstring(game:HttpGet("https://pastefy.app/ebtmcqFh/raw",true))()
 end)
 
 local mystich = createScriptButton("mystic", function(btn)
@@ -13754,18 +13748,46 @@ local mystich = createScriptButton("mystic", function(btn)
 loadstring(game:HttpGet("https://pastefy.app/zdvFIB0X/raw",true))()
 end)
 
+local primadonh = createScriptButton("primadon", function(btn)
+	btn.Text = "Loading... Please Wait"
+	wait(0.5)
+	btn.Text = "primadon"
+loadstring(game:HttpGet("https://pastefy.app/ak6s9JKZ/raw",true))()
+end)
+
+local excah = createScriptButton("exca", function(btn)
+	btn.Text = "Loading... Please Wait"
+	wait(0.5)
+	btn.Text = "exca"
+	loadstring(game:HttpGet("https://pastefy.app/q74DFYYz/raw", true))()
+end)
+
 local r6h = createScriptButton("r6", function(btn)
 	btn.Text = "Loading... Please Wait"
 	wait(0.5)
 	btn.Text = "r6"
-loadstring(game:HttpGet("https://pastefy.app/ak6s9JKZ/raw",true))()
+	loadstring(game:HttpGet("https://pastefy.app/hJICanXh/raw", true))()
 end)
 
-local tah = createScriptButton("ta", function(btn)
+local shamh = createScriptButton("sledge hammer", function(btn)
 	btn.Text = "Loading... Please Wait"
 	wait(0.5)
-	btn.Text = "ta"
-	loadstring(game:HttpGet("https://pastefy.app/q74DFYYz/raw", true))()
+	btn.Text = "sledge hammer"
+	loadstring(game:HttpGet("https://pastefy.app/h6pMAyeA/raw", true))()
+end)
+
+local ningh = createScriptButton("ninja girl", function(btn)
+	btn.Text = "Loading... Please Wait"
+	wait(0.5)
+	btn.Text = "ninja girl"
+	loadstring(game:HttpGet("https://pastefy.app/BnXMZU3X/raw", true))()
+end)
+
+local infecth = createScriptButton("infection", function(btn)
+	btn.Text = "Loading... Please Wait"
+	wait(0.5)
+	btn.Text = "infection"
+	loadstring(game:HttpGet("https://pastefy.app/EeGFCqxO/raw", true))()
 end)
 
 -- Player
