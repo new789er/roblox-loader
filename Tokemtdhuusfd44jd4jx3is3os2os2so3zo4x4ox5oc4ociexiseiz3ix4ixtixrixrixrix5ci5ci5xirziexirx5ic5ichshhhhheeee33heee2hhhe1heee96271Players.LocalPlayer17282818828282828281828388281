@@ -13720,83 +13720,6 @@ local function createScriptButton(labelText, onClickFunction)
 	return textButton
 end
 
-local devoyh = createScriptButton("devoy", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "devoy"
-loadstring(game:HttpGet("https://pastefy.app/8tanIRka/raw",true))()
-end)
-
-local grandh = createScriptButton("grand", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "grand"
-loadstring(game:HttpGet("https://pastefy.app/SEXUdzAT/raw",true))()
-end)
-
-local grand_pivoth = createScriptButton("grand_pivot", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "grand_pivot"
-loadstring(game:HttpGet("https://pastefy.app/QfkXpask/raw",true))()
-end)
-
-local mjolnirh = createScriptButton("mjolnir", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "mjolnir"
-loadstring(game:HttpGet("https://pastefy.app/ebtmcqFh/raw",true))()
-end)
-
-local mystich = createScriptButton("mystic", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "mystic"
-loadstring(game:HttpGet("https://pastefy.app/zdvFIB0X/raw",true))()
-end)
-
-local primadonh = createScriptButton("primadon", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "primadon"
-loadstring(game:HttpGet("https://pastefy.app/ak6s9JKZ/raw",true))()
-end)
-
-local excah = createScriptButton("exca", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "exca"
-	loadstring(game:HttpGet("https://pastefy.app/q74DFYYz/raw", true))()
-end)
-
-local r6h = createScriptButton("r6", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "r6"
-	loadstring(game:HttpGet("https://pastefy.app/hJICanXh/raw", true))()
-end)
-
-local shamh = createScriptButton("sledge hammer", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "sledge hammer"
-	loadstring(game:HttpGet("https://pastefy.app/h6pMAyeA/raw", true))()
-end)
-
-local ningh = createScriptButton("ninja girl", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "ninja girl"
-	loadstring(game:HttpGet("https://pastefy.app/BnXMZU3X/raw", true))()
-end)
-
-local infecth = createScriptButton("infection", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "infection"
-	loadstring(game:HttpGet("https://pastefy.app/EeGFCqxO/raw", true))()
-end)
-
 -- Player
 local PlayerFrame = Instance.new("Frame", adm);
 PlayerFrame.Visible = false;
@@ -17695,10 +17618,10 @@ barlabel.Position = UDim2.new(0, 0, 0.89831, 3);
 		exe.TextColor3 = Color3.new(1,1,1)
 
 		exe.MouseButton1Click:Connect(function()
-local source = codeFrame:GetText()
-loadstring(source)()
-exe.BackgroundColor3 = Color3.new(50,49,50)
-end)
+			local source = codeFrame:GetText()
+			loadstring(source)()
+			exe.BackgroundColor3 = Color3.new(50,49,50)
+		end)
 
 		local exeC = Instance.new("TextButton",exeFrame)
 		exeC.BackgroundTransparency = 1
