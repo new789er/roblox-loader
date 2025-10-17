@@ -1,0 +1,11 @@
+
+s = Instance.new("Sky")
+s.Name = "SKY"
+s.SkyboxBk = "rbxthumb://type=Asset&id=54306534&w=420&h=420"
+s.SkyboxDn = "rbxthumb://type=Asset&id=54306534&w=420&h=420"
+s.SkyboxFt = "rbxthumb://type=Asset&id=54306534&w=420&h=420"
+s.SkyboxLf = "rbxthumb://type=Asset&id=54306534&w=420&h=420"
+s.SkyboxRt = "rbxthumb://type=Asset&id=54306534&w=420&h=420"
+s.SkyboxUp = "rbxthumb://type=Asset&id=54306534&w=420&h=420"
+s.Parent = game.Lighting
+
