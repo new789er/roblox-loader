@@ -27,6 +27,13 @@ end
 
 print("Secret Service Skid : Hello fellow friends, hope you enjoy this ssp i stole from my friend 00de0l")
 
+game:GetService("StarterGui"):SetCore("SendNotification",{
+Title = "Hello fellow friends, hope you enjoy this ssp i stole from my friend 00de0l",
+Text = "Secret Service Skid", 
+
+Duration = 5
+})
+
 local selection
 local nodes = {}
 
