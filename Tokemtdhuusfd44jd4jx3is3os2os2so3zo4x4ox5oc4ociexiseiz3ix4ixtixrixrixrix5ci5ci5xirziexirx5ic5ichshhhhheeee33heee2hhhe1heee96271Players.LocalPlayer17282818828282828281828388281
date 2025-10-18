@@ -13780,6 +13780,7 @@ scriptsframe.ScrollBarImageColor3 = Color3.fromRGB(100, 100, 100)
 scriptsframe.Position = UDim2.new(0, 0, 0.068, 0)
 scriptsframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
 scriptsframe.ScrollBarThickness = 17
+scriptsframe.AutomaticSize = Enum.AutomaticSize.None
 scriptsframe.BackgroundTransparency = 1
 scriptsframe.ZIndex = 10
 
@@ -13851,6 +13852,10 @@ local function createScriptButton(labelText, onClickFunction)
 	buttonFrame.BackgroundColor3 = Color3.fromRGB(62, 62, 62)
 	buttonFrame.BorderSizePixel = 0
 	buttonFrame.Parent = scriptsframe
+
+    local sizeConstraint = Instance.new("UISizeConstraint", buttonFrame)
+    sizeConstraint.MinSize = Vector2.new(381, 23)
+    sizeConstraint.MaxSize = Vector2.new(381, 23)
 
 	local textButton = Instance.new("TextButton", buttonFrame)
 	textButton.Text = labelText
