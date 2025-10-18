@@ -13954,10 +13954,10 @@ local infecth = createScriptButton("infection", function(btn)
 	loadstring(game:HttpGet("https://pastefy.app/EeGFCqxO/raw", true))()
 end)
 
-local devoy3 = createScriptButton("devoy_v3", function(btn)
+local devoy3h = createScriptButton("devoy_v3", function(btn)
     btn.Text = "Loading... Please Wait"
     wait(0.5)
-    btn.Text = "devoy_v3
+    btn.Text = "devoy_v3"
     loadstring(game:HttpGet("https://pastefy.app/UCjvunXP/raw",true))()
 end)
 
