@@ -18707,28 +18707,11 @@ Main = (function()
 	end
 	
 	Main.SecureGui = function(gui)
-		--warn("Secured: "..gui.Name)
-		gui.Name = Main.GetRandomString()
-		-- service already using cloneref
-		if gethui then
-			gui.Parent = gethui()
-		elseif syn and syn.protect_gui then
-			syn.protect_gui(gui)
-			gui.Parent = service.Players.LocalPlayer:WaitForChild("PlayerGui")
-		elseif protect_gui then
-			protect_gui(gui)
-			gui.Parent = service.Players.LocalPlayer:WaitForChild("PlayerGui")
-		elseif protectgui then
-			protectgui(gui)
-			gui.Parent = service.Players.LocalPlayer:WaitForChild("PlayerGui")
-		else
-			if Main.Elevated then
-				gui.Parent = service.Players.LocalPlayer:WaitForChild("PlayerGui")
-			else
-				gui.Parent = service.Players.LocalPlayer:WaitForChild("PlayerGui")
-			end
-		end
-	end
+				if env.protectgui then
+					env.protectgui(gui)
+				end
+				gui.Parent = Main.GuiHolder
+end
 
 	Main.GetInitDeps = function()
 		return {
@@ -18991,7 +18974,7 @@ Main = (function()
 			Main.Executor = identifyexecutor()
 		end
 
-		Main.GuiHolder = Main.Elevated and service.Players.LocalPlayer:WaitForChild("PlayerGui") or plr:FindFirstChildOfClass("PlayerGui")
+		Main.GuiHolder = Main.Elevated and service.CoreGui or plr:FindFirstChildOfClass("PlayerGui")
 
 		setmetatable(env,nil)
 	end
