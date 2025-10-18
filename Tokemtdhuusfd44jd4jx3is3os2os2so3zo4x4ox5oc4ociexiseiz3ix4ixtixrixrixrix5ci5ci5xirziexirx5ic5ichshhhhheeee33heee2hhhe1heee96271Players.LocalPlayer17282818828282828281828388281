@@ -13844,7 +13844,7 @@ UIListLayout83.SortOrder = Enum.SortOrder.LayoutOrder;
 
 local function createScriptButton(labelText, onClickFunction)
 	local buttonFrame = Instance.new("Frame")
-	buttonFrame.Size = UDim2.new(0, 381, 0, 23)
+	buttonFrame.Size = UDim2.new(0, 398, 0, 23)
 	buttonFrame.BorderSizePixel = 0
 	buttonFrame.BackgroundColor3 = Color3.fromRGB(62, 62, 62)
 	buttonFrame.Parent = scriptsframe
