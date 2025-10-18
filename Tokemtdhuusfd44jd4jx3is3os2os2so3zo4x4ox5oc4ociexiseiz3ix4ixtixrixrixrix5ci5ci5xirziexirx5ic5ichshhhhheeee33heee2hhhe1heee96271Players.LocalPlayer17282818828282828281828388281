@@ -13844,6 +13844,7 @@ local UIListLayout83 = Instance.new("UIListLayout", scriptsframe);
 UIListLayout83.SortOrder = Enum.SortOrder.LayoutOrder;
 UIListLayout83.FillDirection = Enum.FillDirection.Vertical
 UIListLayout83.HorizontalAlignment = Enum.HorizontalAlignment.Left
+UIListLayout83.Padding = UDim.new(0, 2)
 
 local function createScriptButton(labelText, onClickFunction)
 	local buttonFrame = Instance.new("Frame")
