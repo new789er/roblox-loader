@@ -13665,7 +13665,6 @@ ImageButton69.Size = UDim2.new(0, 13, 0, 13);
 ImageButton69.BorderColor3 = Color3.fromRGB(28, 43, 54);
 ImageButton69.Position = UDim2.new(1.006, 0, 0.1, 0);
 
--- scriptsframe
 local scriptsframe = Instance.new("ScrollingFrame", PackagesInnerFrame);
 scriptsframe.Active = true;
 scriptsframe.BorderSizePixel = 0;
@@ -13687,12 +13686,13 @@ UIListLayout83.SortOrder = Enum.SortOrder.LayoutOrder;
 
 local function createScriptButton(labelText, onClickFunction)
 	local buttonFrame = Instance.new("Frame")
+	buttonFrame.Name = labelText
 	buttonFrame.Size = UDim2.new(0, 398, 0, 23)
-	buttonFrame.BorderSizePixel = 0
 	buttonFrame.BackgroundColor3 = Color3.fromRGB(62, 62, 62)
+	buttonFrame.BorderSizePixel = 0
 	buttonFrame.Parent = scriptsframe
 
-	local textButton = Instance.new("TextButton")
+	local textButton = Instance.new("TextButton", buttonFrame)
 	textButton.Text = labelText
 	textButton.Size = UDim2.new(0, 347, 0, 17)
 	textButton.Position = UDim2.new(0.012, 0, 0.05, 0)
@@ -13701,15 +13701,13 @@ local function createScriptButton(labelText, onClickFunction)
 	textButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	textButton.TextXAlignment = Enum.TextXAlignment.Left
 	textButton.BackgroundTransparency = 1
-	textButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-	textButton.Parent = buttonFrame
+	textButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 
-	local imageButton = Instance.new("ImageButton")
+	local imageButton = Instance.new("ImageButton", buttonFrame)
 	imageButton.Size = UDim2.new(0, 14, 0, 14)
 	imageButton.Position = UDim2.new(0.954, 0, 0.15, 0)
 	imageButton.Image = "http://www.roblox.com/asset/?id=5060077645"
 	imageButton.BackgroundTransparency = 1
-	imageButton.Parent = buttonFrame
 
 	textButton.MouseButton1Click:Connect(function()
 		if onClickFunction then
@@ -13717,7 +13715,7 @@ local function createScriptButton(labelText, onClickFunction)
 		end
 	end)
 
-	return textButton
+	return buttonFrame
 end
 
 local devoyh = createScriptButton("devoy", function(btn)
@@ -13796,6 +13794,23 @@ local infecth = createScriptButton("infection", function(btn)
 	btn.Text = "infection"
 	loadstring(game:HttpGet("https://pastefy.app/EeGFCqxO/raw", true))()
 end)
+
+local function updateVisibility()
+	local searchTerm = string.lower(SearchbarInput.Text:match("^%s*(.-)%s*$"))
+
+	for _, child in pairs(scriptsframe:GetChildren()) do
+		if child:IsA("Frame") then
+			local frameName = string.lower(child.Name)
+			if searchTerm == "" or string.find(frameName, searchTerm, 1, true) then
+				child.Visible = true
+			else
+				child.Visible = false
+			end
+		end
+	end
+end
+
+SearchbarInput:GetPropertyChangedSignal("Text"):Connect(updateVisibility)
 
 -- Player
 local PlayerFrame = Instance.new("Frame", adm);
@@ -17639,6 +17654,326 @@ barlabel.BorderColor3 = Color3.fromRGB(28, 43, 54);
 barlabel.Text = ">";
 barlabel.Name = "barlabel";
 barlabel.Position = UDim2.new(0, 0, 0.89831, 3);
+
+	local lplr = game:GetService("Players").LocalPlayer
+	local lchr = lplr.Character
+	local lmouse = lplr:GetMouse()
+	
+	
+	local input = bar
+	local BindaEvent = Instance.new("BindableEvent")
+	
+	local tween_service = game:GetService("TweenService")
+	local input_service = game:GetService("UserInputService")
+	
+	
+	
+	local outputframe = Frame_10c
+	
+	local commandsList = {
+		{name = "noglow", description = "removes the player glow"},
+		{name = "headlight", description = "gives the player headlight"},
+		{name = "noheadlight", description = "removes the headlight"},
+		{name = "givegears", description = ""},
+		{name = "swapbases", description = " print the commands"},
+		{name = "unswapbases", description = " print the commands"},
+		{name = "cmds", description = "displays the commands"},
+		{name = "telek", description = ""},
+		{name = "fly", description = "x"},
+		{name = "print", description = "x"},
+		{name = "jp", description = "change a players jp"},
+		{name = "nograv", description = "changes gravity"},
+		{name = "grav", description = "changes gravity"},
+		{name = "shutdown", description = "shuts down game"},
+		{name = "jump", description = "jumpz"},
+		{name = "ban/unban {plr}, {msg}", description = "bans/unbans from game"},
+		{name = "kick {plr}, {msg}", description = "kicks player"},
+		{name = "bring {plr}", description = "brings"},
+		{name = "freeze {plr}", description = "freezes player"},
+		{name = "anchor {plr}", description = "anchors player"},
+		{name = "char {plr}, {plr}", description = "anchors player"},
+		{name = "god {plr}", description = "gods player"},
+		{name = "fling {plr}", description = "flings player"},
+		{name = "jumpscare {plr}", description = "jumpscares player"},
+		{name = "ff {plr}", description = "forcefield player"},
+		{name = "unff {plr}", description = "unforcefield player"},
+		{name = "msg {text}", description = "sents a message to the server"},
+		{name = "wakspeed {plr}, {amount}", description = "sets walkspeed"},
+		{name = "goto/to {plr}", description = "gotos player"},
+		{name = "rmap / smap", description = "resets map / saves current map"},
+		{name = "hat {plr}, {hatid}", description = "gives hat"},
+		{name = "packages", description = "to save scripts to packages."},
+		{name = "addwhitelist / addwl", description = "adds someone to whitelist (in-game only)"}
+	}
+	
+	
+	print("Player Found.")
+	
+	function create_commands(gui)
+		local yPos = 0
+		for i, command in ipairs(commandsList) do
+			local label = outputframe.template:Clone()
+			label.Name = "CommandLabel" .. i 
+			label.Text = "> "..command.name .. " - " .. command.description
+			label.Position = UDim2.new(0, 0, 0, yPos)
+			label.Size = UDim2.new(1, 0, 0, 20)
+			label.Visible = true
+			label.Parent = gui
+	
+			yPos = yPos + 25
+		end
+	end
+	
+	function create_log(cmd,gui)
+		local yPos = 0
+	
+		local label = outputframe.template:Clone()
+		label.Name = "LogLabel" .. cmd
+		label.Text = "> "..cmd .. ""
+		label.Position = UDim2.new(0, 0, 0, yPos)
+		label.Size = UDim2.new(1, 0, 0, 20)
+		label.TextColor3 = Color3.fromRGB(255,255,255)
+		label.Visible = true
+		label.Parent = gui
+	
+		yPos = yPos + 25
+	end
+	
+	
+	function get_players(target)
+		local found_targets = {}
+	
+		if target:lower() == "all" then
+			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+				if v.Character ~= nil then
+					table.insert(found_targets, v)
+				end
+			end
+		elseif target:lower() == "others" then
+			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+				if v.Character ~= nil and v.Name ~= lplr.Name then
+					table.insert(found_targets, v)
+				end
+			end
+		elseif target:lower() == "me" then
+			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+				if v.Character ~= nil and v.Name == lplr.Name then
+					table.insert(found_targets, v)
+				end
+			end
+		elseif target:lower() == "random" then
+			local all_players = {}
+			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+				if v.Character ~= nil then
+					table.insert(all_players, v)
+				end
+			end
+	
+			local randomized = math.random(1, #all_players)
+			table.insert(found_targets, all_players[randomized])
+		else
+			for i,v in ipairs(game:GetService("Players"):GetPlayers()) do
+				if target:lower() == v.DisplayName:lower():sub(1, #target) then
+					table.insert(found_targets, v)
+	
+				elseif target:lower() == v.Name:lower():sub(1, #target) then
+					table.insert(found_targets, v)
+				end
+			end 
+		end
+	
+		return found_targets
+	end
+	
+	input_service.InputBegan:Connect(function(key_input)
+		if key_input.KeyCode == Enum.KeyCode.Comma and not input_service:GetFocusedTextBox() then
+			input:CaptureFocus()
+			wait()
+			input.Text = ""
+		end
+	end)
+	
+	input.FocusLost:Connect(function()
+		local inputText = input.Text:lower()
+	
+		if inputText == "" then
+			return
+		end
+		
+		
+		local arg = string.split(input.Text:lower(), " ")
+		
+		
+		if arg[1] == "cmds" then
+			create_commands(outputframe)
+		end
+	
+		if arg[1] == "to" or arg[1] == "goto" then
+			if arg[2] then
+				for i,v in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("goto", v)
+				end
+			end
+		end
+		
+		if arg[1] == "god" then
+			if arg[2] then
+				for i,v in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("god", v)
+				end
+			end
+		end
+		
+		if arg[1] == "walkspeed" or arg[1] == "ws" then
+			if arg[2] then
+				for i,target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("walkspeed", target, arg[3])
+				end
+			end
+		end
+		
+		if arg[1] == "hat" then
+			if arg[2] then
+				for i,target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("hat", target, arg[3])
+				end
+			end
+		end
+		
+		if arg[1] == "jump" then
+			if arg[2] then
+				for i,v in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("jump", v)
+				end
+			end
+		end
+	
+		if arg[1] == "bring" then
+			if arg[2] then
+				for i,v in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("bring", v)
+				end
+			end
+		end
+	
+	
+		if arg[1] == "anchor" then
+			if arg[2] then
+				if arg[2] == "on" or arg[2] == "off" then
+					for i,v in pairs(get_players(arg[3])) do
+						BindaEvent:Fire("anchor", v, arg[2])
+					end
+	
+				end
+			end
+		end
+	
+		if arg[1] == "freeze" or arg[1] == "fr" then
+			if arg[2] then
+				for i,v in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("freeze", v)
+				end
+			end
+		end
+		
+		if arg[1] == "unfreeze" or arg[1] == "unfr" then
+			if arg[2] then
+				for i,v in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("unfreeze", v)
+				end
+			end
+		end
+	
+		if arg[1] == "re" then
+			if arg[2] then
+				for i,target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("reset", target)
+				end
+			end
+		end
+	
+		if arg[1] == "headlight" then
+			if arg[2] then
+				for i,target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("headlight", target)
+				end
+			end
+		end
+	
+		if arg[1] == "noheadlight" or arg[1] == "noglow" then
+			if arg[2] then
+				for i,target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("noheadlight", target)
+				end
+			end
+		end
+	
+		if arg[1] == "nograv" then
+			BindaEvent:Fire("nograv")
+		elseif arg[1] == "grav" then
+			BindaEvent:Fire("grav")
+		end
+	
+		if arg[1] == "shutdown" then
+			BindaEvent:Fire("shutdown")
+		end
+		 
+		if arg[1] == "packages" then
+			BindaEvent:Fire("addscript")
+		end
+	
+	
+		if arg[1] == "kick" then
+			if arg[2] then
+				for _, target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("kick", target, arg[3])
+				end
+			end
+		end
+	
+		if arg[1] == "ban" then
+			if arg[2] then
+				for i,target in pairs(get_players(arg[2])) do
+					BindaEvent:Fire("ban", target, arg[3])
+				end
+			end
+		end
+		
+		if arg[1] == "unban" then
+			BindaEvent:Fire("unban", nil, arg[2])
+		end
+		
+		if arg[1] == "msg" then
+			local message = table.concat(arg, " ", 2)
+			BindaEvent:Fire("msg", nil, message)
+		end
+	
+		
+		if arg[1] == "char" then
+			for _, target in pairs(get_players(arg[2])) do
+				BindaEvent:Fire("char", target, arg[3])
+			end
+		end
+		
+		if arg[1] == "resetmap" or arg[1] == "rmap" then
+			BindaEvent:Fire("rmap")
+		end
+		
+		if arg[1] == "savemap" or arg[1] == "smap" then
+			BindaEvent:Fire("savemap")
+		end
+		
+		if arg[1] == "addwhitelist" or arg[1] == "addwl" then
+			for _, target in pairs(get_players(arg[2])) do
+				BindaEvent:Fire("addwl", target)
+			end
+		end 
+		
+		input.Text = ""
+		local message = table.concat(arg, " ", 1)
+		create_log(message,outputframe)
+	end)
+	print("cmds loaded")
 
 		local exeFrame = Instance.new("Frame")
 		exeFrame.BackgroundTransparency = 1
