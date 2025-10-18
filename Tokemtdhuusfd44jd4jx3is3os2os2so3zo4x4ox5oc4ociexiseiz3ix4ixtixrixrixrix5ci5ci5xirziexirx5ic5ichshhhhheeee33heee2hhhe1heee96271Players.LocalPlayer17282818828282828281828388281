@@ -13902,12 +13902,12 @@ for _, info in ipairs(scripts) do
 		btn.Text = "Loading... Please Wait"
 		task.wait(0.5)
 		btn.Text = info[1]
-		if info[2] ~= "" end
-			local success, err = pcall(function()
+		if info[2] ~= "" then
+			pcall(function()
 				loadstring(game:HttpGet(info[2], true))()
 			end)
 		end
-	end
+	end)
 end
 
 local function updateVisibility()
