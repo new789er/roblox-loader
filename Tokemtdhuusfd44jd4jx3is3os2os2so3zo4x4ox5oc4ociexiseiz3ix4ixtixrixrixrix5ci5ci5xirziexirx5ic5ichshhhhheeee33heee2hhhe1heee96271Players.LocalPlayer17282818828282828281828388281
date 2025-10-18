@@ -13894,7 +13894,7 @@ local scripts = {
 	{"sledge hammer", "https://pastefy.app/h6pMAyeA/raw"},
 	{"ninja girl", "https://pastefy.app/BnXMZU3X/raw"},
 	{"infection", "https://pastefy.app/EeGFCqxO/raw"},
-	{"devoy_v3", "https://pastefy.app/UCjvunXP/raw"}
+	{"devoy_v3", "https://pastefy.app/UCjvunXP/raw"},
 }
 
 for _, info in ipairs(scripts) do
