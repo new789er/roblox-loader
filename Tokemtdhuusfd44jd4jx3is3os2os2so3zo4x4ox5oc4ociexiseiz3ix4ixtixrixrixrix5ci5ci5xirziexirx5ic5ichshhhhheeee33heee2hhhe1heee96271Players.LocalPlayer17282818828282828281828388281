@@ -13905,12 +13905,16 @@ for _, info in ipairs(scripts) do
 end
 
 local function updateVisibility()
-	local searchTerm = string.lower(SearchbarInput.Text)
+	local searchTerm = string.lower(SearchbarInput.Text:match("^%s*(.-)%s*$"))
 
 	for _, child in pairs(scriptsframe:GetChildren()) do
 		if child:IsA("Frame") then
 			local frameName = string.lower(child.Name)
-			child.Visible = string.find(frameName, searchTerm) ~= nil
+			if searchTerm == "" or string.find(frameName, searchTerm, 1, true) then
+				child.Visible = true
+			else
+				child.Visible = false
+			end
 		end
 	end
 end
