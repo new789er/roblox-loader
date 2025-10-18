@@ -13846,12 +13846,13 @@ UIListLayout83.HorizontalAlignment = Enum.HorizontalAlignment.Left
 
 local function createScriptButton(labelText, onClickFunction)
 	local buttonFrame = Instance.new("Frame")
+	buttonFrame.Name = labelText
 	buttonFrame.Size = UDim2.new(0, 381, 0, 23)
-	buttonFrame.BorderSizePixel = 0
 	buttonFrame.BackgroundColor3 = Color3.fromRGB(62, 62, 62)
+	buttonFrame.BorderSizePixel = 0
 	buttonFrame.Parent = scriptsframe
 
-	local textButton = Instance.new("TextButton")
+	local textButton = Instance.new("TextButton", buttonFrame)
 	textButton.Text = labelText
 	textButton.Size = UDim2.new(0, 347, 0, 17)
 	textButton.Position = UDim2.new(0.012, 0, 0.05, 0)
@@ -13860,15 +13861,13 @@ local function createScriptButton(labelText, onClickFunction)
 	textButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	textButton.TextXAlignment = Enum.TextXAlignment.Left
 	textButton.BackgroundTransparency = 1
-	textButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-	textButton.Parent = buttonFrame
+	textButton.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json")
 
-	local imageButton = Instance.new("ImageButton")
+	local imageButton = Instance.new("ImageButton", buttonFrame)
 	imageButton.Size = UDim2.new(0, 14, 0, 14)
 	imageButton.Position = UDim2.new(0.954, 0, 0.15, 0)
 	imageButton.Image = "http://www.roblox.com/asset/?id=5060077645"
 	imageButton.BackgroundTransparency = 1
-	imageButton.Parent = buttonFrame
 
 	textButton.MouseButton1Click:Connect(function()
 		if onClickFunction then
