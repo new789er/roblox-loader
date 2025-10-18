@@ -13665,21 +13665,178 @@ ImageButton69.Size = UDim2.new(0, 13, 0, 13);
 ImageButton69.BorderColor3 = Color3.fromRGB(28, 43, 54);
 ImageButton69.Position = UDim2.new(1.006, 0, 0.1, 0);
 
--- scriptsframe
-local scriptsframe = Instance.new("ScrollingFrame", PackagesInnerFrame);
-scriptsframe.Active = true;
-scriptsframe.BorderSizePixel = 0;
-scriptsframe.CanvasSize = UDim2.new(0, 0, 0, 0);
-scriptsframe.TopImage = "rbxassetid://0";
-scriptsframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
-scriptsframe.Name = "scriptsframe";
-scriptsframe.BottomImage = "rbxassetid://0";
-scriptsframe.Size = UDim2.new(0, 397, 0, 261);
-scriptsframe.ScrollBarImageColor3 = Color3.fromRGB(100, 100, 100);
-scriptsframe.Position = UDim2.new(0, 0, 0.068, 0);
-scriptsframe.BorderColor3 = Color3.fromRGB(0, 0, 0);
-scriptsframe.ScrollBarThickness = 17;
-scriptsframe.BackgroundTransparency = 1;
+local ScrollBar = Instance.new("Frame", PackagesFrame)
+ScrollBar.Name = "ScrollBar"
+ScrollBar.Visible = false
+ScrollBar.BorderSizePixel = 0
+ScrollBar.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+ScrollBar.Size = UDim2.new(0.00253, 16, 0.98836, -48)
+ScrollBar.Position = UDim2.new(1, -16, 0.06899, 0)
+ScrollBar.BorderColor3 = Color3.fromRGB(28, 43, 54)
+
+local Down = Instance.new("ImageButton", ScrollBar)
+Down.Name = "Down"
+Down.BorderSizePixel = 0
+Down.AutoButtonColor = false
+Down.BackgroundTransparency = 1
+Down.Size = UDim2.new(0, 16, 0, 16)
+Down.Position = UDim2.new(0, 0, 1, -16)
+Down.BorderColor3 = Color3.fromRGB(28, 43, 54)
+
+local DownArrow = Instance.new("Frame", Down)
+DownArrow.Name = "Arrow"
+DownArrow.Size = UDim2.new(0, 16, 0, 16)
+DownArrow.BorderColor3 = Color3.fromRGB(28, 43, 54)
+DownArrow.BackgroundTransparency = 1
+
+local DownArrowFrame1 = Instance.new("Frame", DownArrow)
+DownArrowFrame1.BorderSizePixel = 0
+DownArrowFrame1.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+DownArrowFrame1.Size = UDim2.new(0, 7, 0, 1)
+DownArrowFrame1.Position = UDim2.new(0, 5, 0, 7)
+DownArrowFrame1.BorderColor3 = Color3.fromRGB(28, 43, 54)
+DownArrowFrame1.BackgroundTransparency = 0.5
+
+local DownArrowFrame2 = Instance.new("Frame", DownArrow)
+DownArrowFrame2.BorderSizePixel = 0
+DownArrowFrame2.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+DownArrowFrame2.Size = UDim2.new(0, 5, 0, 1)
+DownArrowFrame2.Position = UDim2.new(0, 6, 0, 8)
+DownArrowFrame2.BorderColor3 = Color3.fromRGB(28, 43, 54)
+DownArrowFrame2.BackgroundTransparency = 0.5
+
+local DownArrowFrame3 = Instance.new("Frame", DownArrow)
+DownArrowFrame3.BorderSizePixel = 0
+DownArrowFrame3.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+DownArrowFrame3.Size = UDim2.new(0, 3, 0, 1)
+DownArrowFrame3.Position = UDim2.new(0, 7, 0, 9)
+DownArrowFrame3.BorderColor3 = Color3.fromRGB(28, 43, 54)
+DownArrowFrame3.BackgroundTransparency = 0.5
+
+local DownArrowFrame4 = Instance.new("Frame", DownArrow)
+DownArrowFrame4.BorderSizePixel = 0
+DownArrowFrame4.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+DownArrowFrame4.Size = UDim2.new(0, 1, 0, 1)
+DownArrowFrame4.Position = UDim2.new(0, 8, 0, 10)
+DownArrowFrame4.BorderColor3 = Color3.fromRGB(28, 43, 54)
+DownArrowFrame4.BackgroundTransparency = 0.5
+
+local Up = Instance.new("ImageButton", ScrollBar)
+Up.Name = "Up"
+Up.BorderSizePixel = 0
+Up.AutoButtonColor = false
+Up.BackgroundTransparency = 1
+Up.Size = UDim2.new(0, 16, 0, 16)
+Up.BorderColor3 = Color3.fromRGB(28, 43, 54)
+
+local UpArrow = Instance.new("Frame", Up)
+UpArrow.Name = "Arrow"
+UpArrow.Size = UDim2.new(0, 16, 0, 16)
+UpArrow.BorderColor3 = Color3.fromRGB(28, 43, 54)
+UpArrow.BackgroundTransparency = 1
+
+local UpArrowFrame1 = Instance.new("Frame", UpArrow)
+UpArrowFrame1.BorderSizePixel = 0
+UpArrowFrame1.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+UpArrowFrame1.Size = UDim2.new(0, 7, 0, 1)
+UpArrowFrame1.Position = UDim2.new(0, 5, 0, 9)
+UpArrowFrame1.BorderColor3 = Color3.fromRGB(28, 43, 54)
+UpArrowFrame1.BackgroundTransparency = 0.5
+
+local UpArrowFrame2 = Instance.new("Frame", UpArrow)
+UpArrowFrame2.BorderSizePixel = 0
+UpArrowFrame2.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+UpArrowFrame2.Size = UDim2.new(0, 5, 0, 1)
+UpArrowFrame2.Position = UDim2.new(0, 6, 0, 8)
+UpArrowFrame2.BorderColor3 = Color3.fromRGB(28, 43, 54)
+UpArrowFrame2.BackgroundTransparency = 0.5
+
+local UpArrowFrame3 = Instance.new("Frame", UpArrow)
+UpArrowFrame3.BorderSizePixel = 0
+UpArrowFrame3.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+UpArrowFrame3.Size = UDim2.new(0, 3, 0, 1)
+UpArrowFrame3.Position = UDim2.new(0, 7, 0, 7)
+UpArrowFrame3.BorderColor3 = Color3.fromRGB(28, 43, 54)
+UpArrowFrame3.BackgroundTransparency = 0.5
+
+local UpArrowFrame4 = Instance.new("Frame", UpArrow)
+UpArrowFrame4.BorderSizePixel = 0
+UpArrowFrame4.BackgroundColor3 = Color3.fromRGB(221, 221, 221)
+UpArrowFrame4.Size = UDim2.new(0, 1, 0, 1)
+UpArrowFrame4.Position = UDim2.new(0, 8, 0, 6)
+UpArrowFrame4.BorderColor3 = Color3.fromRGB(28, 43, 54)
+UpArrowFrame4.BackgroundTransparency = 0.5
+
+local scriptsframe = Instance.new("ScrollingFrame", PackagesInnerFrame)
+scriptsframe.Active = true
+scriptsframe.BorderSizePixel = 0
+scriptsframe.CanvasSize = UDim2.new(0, 0, 0, 0)
+scriptsframe.TopImage = "rbxassetid://0"
+scriptsframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scriptsframe.Name = "scriptsframe"
+scriptsframe.BottomImage = "rbxassetid://0"
+scriptsframe.Size = UDim2.new(0, 397, 0, 261)
+scriptsframe.ScrollBarImageColor3 = Color3.fromRGB(100, 100, 100)
+scriptsframe.Position = UDim2.new(0, 0, 0.068, 0)
+scriptsframe.BorderColor3 = Color3.fromRGB(0, 0, 0)
+scriptsframe.ScrollBarThickness = 17
+scriptsframe.BackgroundTransparency = 1
+scriptsframe.ZIndex = 10
+
+local scrollbar = ScrollBar
+local scrollingFrame = scriptsframe
+local value = Vector2.new(0, 0)
+
+local function updateCanvasSize()
+	local totalHeight = 0
+	local children = scrollingFrame:GetChildren()
+	for _, child in ipairs(children) do
+		if child:IsA("Frame") then
+			totalHeight += child.Size.Y.Offset
+			if scrollbar.Visible then
+				child.Size = UDim2.new(0, 381, 0, 23)
+			else
+				child.Size = UDim2.new(0, 398, 0, 23)
+			end
+		end
+	end
+	scrollingFrame.CanvasSize = UDim2.new(0, 0, 0, totalHeight)
+	value = Vector2.new(0, math.max(totalHeight - scrollingFrame.Size.Y.Offset, 0))
+	scrollbar.Visible = totalHeight > scrollingFrame.Size.Y.Offset
+end
+
+local function updateArrows()
+	local atTop = scrollingFrame.CanvasPosition.Y <= 0
+	local atBottom = scrollingFrame.CanvasPosition.Y >= value.Y
+	for _, v in pairs(scrollbar.Up.Arrow:GetChildren()) do
+		v.BackgroundTransparency = atTop and 0.5 or 0
+	end
+	for _, v in pairs(scrollbar.Down.Arrow:GetChildren()) do
+		v.BackgroundTransparency = atBottom and 0.5 or 0
+	end
+end
+
+scrollingFrame:GetPropertyChangedSignal("CanvasPosition"):Connect(updateArrows)
+scrollingFrame.ChildAdded:Connect(updateCanvasSize)
+scrollingFrame.ChildRemoved:Connect(updateCanvasSize)
+
+local ButtonTop = scrollbar.Up
+local ButtonBottom = scrollbar.Down
+
+ButtonTop.MouseButton1Down:Connect(function()
+	if scrollingFrame.CanvasPosition.Y > 0 then
+		scrollingFrame.CanvasPosition -= Vector2.new(0, 15)
+	end
+end)
+
+ButtonBottom.MouseButton1Down:Connect(function()
+	if scrollingFrame.CanvasPosition.Y < value.Y then
+		scrollingFrame.CanvasPosition += Vector2.new(0, 15)
+	end
+end)
+
+updateCanvasSize()
+updateArrows()
 
 -- UIListLayout (scriptsframe)
 local UIListLayout83 = Instance.new("UIListLayout", scriptsframe);
