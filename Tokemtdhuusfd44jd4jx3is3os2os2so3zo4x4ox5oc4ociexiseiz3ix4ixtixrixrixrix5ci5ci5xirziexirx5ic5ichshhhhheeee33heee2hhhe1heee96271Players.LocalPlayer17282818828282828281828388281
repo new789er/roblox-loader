@@ -13877,10 +13877,10 @@ local function createScriptButton(labelText, onClickFunction)
 	return textButton
 end
 
-local devoyh = createScriptButton("devoy", function(btn)
+local devoy4h = createScriptButton("devoy_v4", function(btn)
 	btn.Text = "Loading... Please Wait"
 	wait(0.5)
-	btn.Text = "devoy"
+	btn.Text = "devoy_v4"
 loadstring(game:HttpGet("https://pastefy.app/8tanIRka/raw",true))()
 end)
 
@@ -13952,6 +13952,13 @@ local infecth = createScriptButton("infection", function(btn)
 	wait(0.5)
 	btn.Text = "infection"
 	loadstring(game:HttpGet("https://pastefy.app/EeGFCqxO/raw", true))()
+end)
+
+local devoy3 = createScriptButton("devoy_v3", function(btn)
+    btn.Text = "Loading... Please Wait"
+    wait(0.5)
+    btn.Text = "devoy_v3
+    loadstring(game:HttpGet("https://pastefy.app/UCjvunXP/raw",true))()
 end)
 
 -- Player
