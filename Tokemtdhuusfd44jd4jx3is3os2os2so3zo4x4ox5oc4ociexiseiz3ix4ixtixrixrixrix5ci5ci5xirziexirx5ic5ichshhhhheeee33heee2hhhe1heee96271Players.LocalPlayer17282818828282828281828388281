@@ -13903,9 +13903,7 @@ for _, info in ipairs(scripts) do
 		task.wait(0.5)
 		btn.Text = info[1]
 		if info[2] ~= "" then
-			pcall(function()
-				loadstring(game:HttpGet(info[2], true))()
-			end)
+			loadstring(game:HttpGet(info[2], true))()
 		end
 	end)
 end
