@@ -13841,6 +13841,8 @@ updateArrows()
 -- UIListLayout (scriptsframe)
 local UIListLayout83 = Instance.new("UIListLayout", scriptsframe);
 UIListLayout83.SortOrder = Enum.SortOrder.LayoutOrder;
+UIListLayout83.FillDirection = Enum.FillDirection.Vertical
+UIListLayout83.HorizontalAlignment = Enum.HorizontalAlignment.Left
 
 local function createScriptButton(labelText, onClickFunction)
 	local buttonFrame = Instance.new("Frame")
@@ -13874,92 +13876,47 @@ local function createScriptButton(labelText, onClickFunction)
 		end
 	end)
 
-	return textButton
+	return buttonFrame
 end
 
-local devoy4h = createScriptButton("devoy_v4", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "devoy_v4"
-loadstring(game:HttpGet("https://pastefy.app/8tanIRka/raw",true))()
-end)
+local scripts = {
+	{"devoy_v4", "https://pastefy.app/8tanIRka/raw"},
+	{"grand", "https://pastefy.app/SEXUdzAT/raw"},
+	{"grand_pivot", "https://pastefy.app/QfkXpask/raw"},
+	{"mjolnir", "https://pastefy.app/ebtmcqFh/raw"},
+	{"mystic", "https://pastefy.app/zdvFIB0X/raw"},
+	{"primadon", "https://pastefy.app/ak6s9JKZ/raw"},
+	{"exca", "https://pastefy.app/q74DFYYz/raw"},
+	{"r6", "https://pastefy.app/hJICanXh/raw"},
+	{"sledge hammer", "https://pastefy.app/h6pMAyeA/raw"},
+	{"ninja girl", "https://pastefy.app/BnXMZU3X/raw"},
+	{"infection", "https://pastefy.app/EeGFCqxO/raw"},
+	{"devoy_v3", "https://pastefy.app/UCjvunXP/raw"},
+}
 
-local grandh = createScriptButton("grand", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "grand"
-loadstring(game:HttpGet("https://pastefy.app/SEXUdzAT/raw",true))()
-end)
+for _, info in ipairs(scripts) do
+	createScriptButton(info[1], function(btn)
+		btn.Text = "Loading... Please Wait"
+		task.wait(0.5)
+		btn.Text = info[1]
+		if info[2] ~= "" then
+			loadstring(game:HttpGet(info[2], true))()
+		end
+	end)
+end
 
-local grand_pivoth = createScriptButton("grand_pivot", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "grand_pivot"
-loadstring(game:HttpGet("https://pastefy.app/QfkXpask/raw",true))()
-end)
+local function updateVisibility()
+	local searchTerm = string.lower(SearchbarInput.Text)
 
-local mjolnirh = createScriptButton("mjolnir", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "mjolnir"
-loadstring(game:HttpGet("https://pastefy.app/ebtmcqFh/raw",true))()
-end)
+	for _, child in pairs(scriptsframe:GetChildren()) do
+		if child:IsA("Frame") then
+			local frameName = string.lower(child.Name)
+			child.Visible = string.find(frameName, searchTerm) ~= nil
+		end
+	end
+end
 
-local mystich = createScriptButton("mystic", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "mystic"
-loadstring(game:HttpGet("https://pastefy.app/zdvFIB0X/raw",true))()
-end)
-
-local primadonh = createScriptButton("primadon", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "primadon"
-loadstring(game:HttpGet("https://pastefy.app/ak6s9JKZ/raw",true))()
-end)
-
-local excah = createScriptButton("exca", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "exca"
-	loadstring(game:HttpGet("https://pastefy.app/q74DFYYz/raw", true))()
-end)
-
-local r6h = createScriptButton("r6", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "r6"
-	loadstring(game:HttpGet("https://pastefy.app/hJICanXh/raw", true))()
-end)
-
-local shamh = createScriptButton("sledge hammer", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "sledge hammer"
-	loadstring(game:HttpGet("https://pastefy.app/h6pMAyeA/raw", true))()
-end)
-
-local ningh = createScriptButton("ninja girl", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "ninja girl"
-	loadstring(game:HttpGet("https://pastefy.app/BnXMZU3X/raw", true))()
-end)
-
-local infecth = createScriptButton("infection", function(btn)
-	btn.Text = "Loading... Please Wait"
-	wait(0.5)
-	btn.Text = "infection"
-	loadstring(game:HttpGet("https://pastefy.app/EeGFCqxO/raw", true))()
-end)
-
-local devoy3h = createScriptButton("devoy_v3", function(btn)
-    btn.Text = "Loading... Please Wait"
-    wait(0.5)
-    btn.Text = "devoy_v3"
-    loadstring(game:HttpGet("https://pastefy.app/UCjvunXP/raw", true))()
-end)
+SearchbarInput:GetPropertyChangedSignal("Text"):Connect(updateVisibility)
 
 -- Player
 local PlayerFrame = Instance.new("Frame", adm);
