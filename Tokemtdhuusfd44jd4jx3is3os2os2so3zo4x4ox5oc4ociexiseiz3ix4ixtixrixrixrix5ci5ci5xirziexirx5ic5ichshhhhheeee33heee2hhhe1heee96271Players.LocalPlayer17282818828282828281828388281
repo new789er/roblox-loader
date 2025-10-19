@@ -1,5 +1,5 @@
 game:GetService("StarterGui"):SetCore("SendNotification",{
-Title = "Hope you guys enjoy this ssp I stole from my friend 00de0l",
+Title = "Hope you guys enjoy ssp I stole from my friend 00de0l",
 Text = "Secret Service Skid", 
 
 Duration = 5
